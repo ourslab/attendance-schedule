@@ -20,15 +20,14 @@ function attendance_schedule_onload() {
   for (let a = 1; a < data.length; a++) {
     rows.push(`${data[a].children[0].innerHTML}`);
     list[rows[a-1]] = [];
-    for (let b = 1; b < columns.length; b++) {
+    for (let b = 0; b < columns.length; b++) {
       let attend = false;
-      ["o", "O", "〇"].forEach(c => attend = (data[a].children[b].innerHTML == c)? true : attend);
+      ["o", "O", "〇"].forEach(c => attend = (data[a].children[b+1].innerHTML == c)? true : attend);
       if (attend) {
-        list[rows[a-1]].push(columns[b-1]);
+        list[rows[a-1]].push(columns[b]);
       }
     }
   }
-  console.log(list);
   if (rows.length == 0) {
     console.log("list is empty.");
     return true;
