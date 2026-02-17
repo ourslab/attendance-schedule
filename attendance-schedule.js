@@ -74,7 +74,7 @@ function attendance_schedule_onload() {
     console.log("main element is not found");
     return true;
   }
-  main_dom.appendchild(show_table_dom);
+  main_dom.appendChild(show_table_dom);
   return false;
 }
 
