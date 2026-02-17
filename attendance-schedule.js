@@ -28,6 +28,7 @@ function attendance_schedule_onload() {
       }
     }
   }
+  console.log(list);
   if (rows.length == 0) {
     console.log("list is empty.");
     return true;
@@ -51,12 +52,12 @@ function attendance_schedule_onload() {
       if (list_index >= rows.length) {
         continue;
       }
-      let date = rows[list_index].split("-");
-      if (date.length != 4) {
-        console.log("Unexpected data format found.");
-        return true;
-      }
       if (!started) {
+        let date = rows[list_index].split("-");
+        if (date.length != 4) {
+          console.log("Unexpected data format found.");
+          return true;
+        }
         date[3] = (date[3] == "SUN")? 0 : (date[3] == "MON")? 1 : (date[3] == "TUE")? 2 : (date[3] == "WED")? 3 : (date[3] == "THU")? 4 : (date[3] == "FRI")? 5 : 6;
         if (b == date[3]) {
           started = true;
