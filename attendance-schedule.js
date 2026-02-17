@@ -67,7 +67,7 @@ function attendance_schedule_onload() {
         show_table_column_dom.appendChild(show_table_ul_dom);
         const show_table_li_dom = document.createElement("li");
         show_table_ul_dom.appendChild(show_table_li_dom);
-        show_table_li_dom.innerHTML = `${String(date[2]).padStart(2, "0")}`;
+        show_table_li_dom.innerHTML = `${String(date[1]).padStart(2, "0")} / ${String(date[2]).padStart(2, "0")}`;
         for (let c = 0; c < list[rows[list_index]].length; c++) {
           const show_table_li_dom = document.createElement("li");
           show_table_ul_dom.appendChild(show_table_li_dom);
