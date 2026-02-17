@@ -63,13 +63,15 @@ function attendance_schedule_onload() {
         }
       }
       if (started) {
-        const text = document.createElement("span");
-        text.innerHTML = `${String(date[2]).padStart(2, "0")}`;
-        show_table_column_dom.appendChild(text);
+        const show_table_ul_dom = document.createElement("ul");
+        show_table_column_dom.appendChild(show_table_ul_dom);
+        const show_table_li_dom = document.createElement("li");
+        show_table_ul_dom.appendChild(show_table_li_dom);
+        show_table_li_dom.innerHTML = `${String(date[2]).padStart(2, "0")}`;
         for (let c = 0; c < list[rows[list_index]].length; c++) {
-          const text = document.createElement("span");
-          text.innerHTML = `${list[rows[list_index]][c]}`;
-          show_table_column_dom.appendChild(text);
+          const show_table_li_dom = document.createElement("li");
+          show_table_ul_dom.appendChild(show_table_li_dom);
+          show_table_li_dom.innerHTML = `${list[rows[list_index]][c]}`;
         }
         list_index = list_index + 1;
       }
