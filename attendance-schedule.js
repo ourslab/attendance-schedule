@@ -36,15 +36,18 @@ function attendance_schedule_onload() {
   let list_index = 0
   const show_table_dom = document.createElement("table");
   const show_table_row_dom = document.createElement("tr");
+  show_table_dom.appendChild(show_table_row_dom);
   for (let b = 0; b < 7; b++) {
     const show_table_column_dom = document.createElement("td");
     show_table_column_dom.innerHTML = (b == 0)? "SUN" : (b == 1)? "MON" : (b == 2)? "TUE" : (b == 3)? "WED" : (b == 4)? "THU" : (b == 5)? "FRI" : "SAT";
     show_table_row_dom.appendChild(show_table_column_dom);
   }
-  show_table_dom.appendChild(show_table_row_dom);
   for (let a = 0; a < 5; a++) {
     const show_table_row_dom = document.createElement("tr");
+    show_table_dom.appendChild(show_table_row_dom);
     for (let b = 0; b < 7; b++) {
+      const show_table_column_dom = document.createElement("td");
+      show_table_row_dom.appendChild(show_table_column_dom);    
       if (list_index >= rows.length) {
         continue;
       }
@@ -59,25 +62,22 @@ function attendance_schedule_onload() {
           started = true;
         }
       }
-      const show_table_column_dom = document.createElement("td");
       if (started) {
         for (let c = 0; c < list[rows[list_index]].length; c++) {
           const text = document.createElement("span");
           text.innerHTML = `${list[rows[list_index]][c]}`;
           show_table_column_dom.appendChild(text);
         }
+        list_index = list_index + 1;
       }
-      list_index = list_index + 1;
-      show_table_row_dom.appendChild(show_table_column_dom);    
     }
-    show_table_dom.appendChild(show_table_row_dom);
   }
-  const main_dom = document.querySelector("main#main");
-  if (!main_dom) {
-    console.log("main element is not found");
+  const show_table_div_dom = document.querySelector("#show_table_div");
+  if (!show_table_div_dom) {
+    console.log("show table div element is not found");
     return true;
   }
-  main_dom.appendChild(show_table_dom);
+  show_table_div_dom.appendChild(show_table_dom);
   return false;
 }
 
