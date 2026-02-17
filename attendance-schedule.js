@@ -1,7 +1,7 @@
 function attendance_schedule_onload() {
   const data_table_dom = document.querySelector("figure#data-table");
   if (!data_table_dom) {
-    console.warn("data table is not found.");
+    console.log("data table is not found.");
     return true;
   }
   const data = data_table_dom.children[0].children[0].children;
@@ -12,7 +12,7 @@ function attendance_schedule_onload() {
   for (let a = 1; a < data[0].children.length; a++) {
     columns.push(data[0].children[a].innerHTML);
   }
-  if (columns.length < 2) {
+  if (columns.length < 1) {
     return true;
   }
   let rows = [];
@@ -29,7 +29,7 @@ function attendance_schedule_onload() {
     }
   }
   if (list.length == 0) {
-    console.warn("list is empty.");
+    console.log("list is empty.");
     return true;
   }
   let started = false;
@@ -50,8 +50,8 @@ function attendance_schedule_onload() {
       }
       let date = list[list_index].split("-");
       if (date.length != 4) {
-        console.warn("Unexpected data format found.");
-        return false;
+        console.log("Unexpected data format found.");
+        return true;
       }
       if (!started) {
         date[3] = (date[3] == "SUN")? 0 : (date[3] == "MON")? 1 : (date[3] == "TUE")? 2 : (date[3] == "WED")? 3 : (date[3] == "THU")? 4 : (date[3] == "FRI")? 5 : 6;
