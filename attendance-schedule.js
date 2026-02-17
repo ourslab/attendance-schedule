@@ -28,7 +28,7 @@ function attendance_schedule_onload() {
       }
     }
   }
-  if (list.length == 0) {
+  if (rows.length == 0) {
     console.log("list is empty.");
     return true;
   }
@@ -45,10 +45,10 @@ function attendance_schedule_onload() {
   for (let a = 0; a < 5; a++) {
     const show_table_row_dom = document.createElement("tr");
     for (let b = 0; b < 7; b++) {
-      if (list_index >= list.length) {
+      if (list_index >= rows.length) {
         continue;
       }
-      let date = list[list_index].split("-");
+      let date = rows[list_index].split("-");
       if (date.length != 4) {
         console.log("Unexpected data format found.");
         return true;
@@ -61,10 +61,13 @@ function attendance_schedule_onload() {
       }
       const show_table_column_dom = document.createElement("td");
       if (started) {
-        for (let c = 0; c < list[list_index].length; c++) {
-          show_table_column_dom.innerHTML += `${list[list_index][c]}\n`;
+        for (let c = 0; c < list[rows[list_index]].length; c++) {
+          const text = document.createElement("span");
+          text.innerHTML = `${list[rows[list_index]][c]}`;
+          show_table_column_dom.appendChild(text);
         }
       }
+      list_index = list_index + 1;
       show_table_row_dom.appendChild(show_table_column_dom);    
     }
     show_table_dom.appendChild(show_table_row_dom);
