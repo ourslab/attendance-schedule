@@ -72,7 +72,7 @@ function attendance_schedule_onload() {
       }
     }
   }
-  const show_table_div_dom = document.querySelector("#show_table_div");
+  const show_table_div_dom = document.querySelector("#show-table-div");
   if (!show_table_div_dom) {
     console.log("show table div element is not found");
     return true;
