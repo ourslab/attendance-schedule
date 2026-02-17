@@ -51,8 +51,8 @@ function attendance_schedule_onload() {
       if (list_index >= rows.length) {
         continue;
       }
+      let date = rows[list_index].split("-");
       if (!started) {
-        let date = rows[list_index].split("-");
         if (date.length != 4) {
           console.log("Unexpected data format found.");
           return true;
