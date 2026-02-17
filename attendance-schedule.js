@@ -64,6 +64,9 @@ function attendance_schedule_onload() {
         }
       }
       if (started) {
+        const text = document.createElement("span");
+        text.innerHTML = `${String(date[2]).padStart(2, "0")}`;
+        show_table_column_dom.appendChild(text);
         for (let c = 0; c < list[rows[list_index]].length; c++) {
           const text = document.createElement("span");
           text.innerHTML = `${list[rows[list_index]][c]}`;
